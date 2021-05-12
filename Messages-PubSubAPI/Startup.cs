@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Messages_DAL.Database;
 using Messages_DAL.Repositories.Chats;
+using Messages_DAL.Services.Chats;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +30,7 @@ namespace Messages_PubSubAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IChatsRepository, ChatsRepository>();
+            services.AddScoped<IChatsService, ChatsService>();
 
             services.AddDbContext<MessagesContext>(options =>
             {
