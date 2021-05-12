@@ -2,6 +2,7 @@
 using Messages_DAL.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 #nullable disable
 
@@ -13,20 +14,22 @@ namespace Messages_DAL.Database
         {
         }
 
-        public MessagesContext(DbContextOptions<MessagesContext> options)
+        public MessagesContext(DbContextOptions<MessagesContext> options,
+                               IConfiguration Configuration)
             : base(options)
         {
+            this.Configuration = Configuration;
         }
 
         public virtual DbSet<Chat> Chats { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public IConfiguration Configuration { get; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Initial Catalog=Messages;Integrated Security=True");
+                optionsBuilder.UseSqlServer(Configuration.GetConnectionString("Default"));
             }
         }
 
