@@ -37,6 +37,8 @@ namespace Messages_PubSubAPI
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllers();
         }
 
