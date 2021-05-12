@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Messages_DAL.Database;
 using Messages_DAL.Repositories.Chats;
 using Messages_DAL.Services.Chats;
+using Messages_PubSubAPI.Hubs.Chats;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -38,6 +39,16 @@ namespace Messages_PubSubAPI
             });
 
             services.AddAutoMapper(typeof(Startup));
+
+            services.AddSignalR();
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials()
+                       .WithOrigins("http://localhost:4200");
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,6 +62,11 @@ namespace Messages_PubSubAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<ChatHub>("hubs/chat");
+            });
         }
     }
 }
