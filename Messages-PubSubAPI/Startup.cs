@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Messages_DAL.Database;
+using Messages_DAL.Repositories.Chats;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,8 @@ namespace Messages_PubSubAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IChatsRepository, ChatsRepository>();
+
             services.AddDbContext<MessagesContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
