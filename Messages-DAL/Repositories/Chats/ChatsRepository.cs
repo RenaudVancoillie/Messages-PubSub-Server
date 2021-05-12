@@ -21,7 +21,7 @@ namespace Messages_DAL.Repositories.Chats
         {
             return db.Chats
                 .OrderBy(c => c.Name)
-                .ToList();
+                .AsEnumerable();
         }
     }
 }
