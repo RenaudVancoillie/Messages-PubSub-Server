@@ -10,5 +10,6 @@ namespace Messages_PubSubAPI.Controllers.Chats
     public interface IChatsController
     {
         ActionResult<IEnumerable<ChatDTO>> GetAll();
+        ActionResult<ChatDetailDTO> GetById(int id);
     }
 }

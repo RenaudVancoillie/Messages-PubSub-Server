@@ -13,6 +13,7 @@ namespace Messages_PubSubAPI.Mappings
         public ChatProfile()
         {
             CreateMap<Chat, ChatDTO>();
+            CreateMap<Chat, ChatDetailDTO>();
         }
     }
 }

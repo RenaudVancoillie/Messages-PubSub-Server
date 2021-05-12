@@ -10,5 +10,6 @@ namespace Messages_DAL.Services.Chats
     public interface IChatsService
     {
         IEnumerable<ChatDTO> GetAll();
+        ChatDetailDTO GetById(int id);
     }
 }

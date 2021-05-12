@@ -29,5 +29,7 @@ namespace Messages_DAL.Services.Chats
                 .ProjectTo<ChatDTO>(mapper.ConfigurationProvider)
                 .AsEnumerable();
         }
+
+        public ChatDetailDTO GetById(int id) => chatsRepository.GetById(id);
     }
 }

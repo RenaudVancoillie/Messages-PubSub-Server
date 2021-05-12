@@ -36,5 +36,27 @@ namespace Messages_PubSubAPI.Controllers.Chats
                     $"Something went wrong: {exc.Message}");
             }
         }
+
+        [HttpGet("{id:int:min(1)}")]
+        [ProducesResponseType(typeof(ChatDetailDTO), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        public ActionResult<ChatDetailDTO> GetById(int id)
+        {
+            try
+            {
+                ChatDetailDTO chat = chatsService.GetById(id);
+                if (chat == null)
+                {
+                    return NotFound($"Chat with id {id} not found.");
+                }
+                return Ok(chat);
+            }
+            catch (Exception exc)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Something went wrong: {exc.Message}");
+            }
+        }
     }
 }
