@@ -20,6 +20,9 @@ namespace Messages_PubSubAPI.Controllers.Chats
             this.chatsService = chatsService;
         }
 
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<ChatDTO>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public ActionResult<IEnumerable<ChatDTO>> GetAll()
         {
             try

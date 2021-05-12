@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Messages-PubSubAPI", "Messa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages-DAL", "Messages-DAL\Messages-DAL.csproj", "{8B9BE09C-14E9-49F2-B4A0-7704B56FCF86}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages-WebAPI", "Messages-WebAPI\Messages-WebAPI.csproj", "{86DC7CB7-AA6A-4883-B02B-9EE0CCA806AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{8B9BE09C-14E9-49F2-B4A0-7704B56FCF86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B9BE09C-14E9-49F2-B4A0-7704B56FCF86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B9BE09C-14E9-49F2-B4A0-7704B56FCF86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86DC7CB7-AA6A-4883-B02B-9EE0CCA806AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DC7CB7-AA6A-4883-B02B-9EE0CCA806AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DC7CB7-AA6A-4883-B02B-9EE0CCA806AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DC7CB7-AA6A-4883-B02B-9EE0CCA806AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
