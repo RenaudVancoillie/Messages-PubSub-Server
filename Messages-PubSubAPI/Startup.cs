@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Messages_DAL.Database;
 using Messages_DAL.Repositories.Chats;
+using Messages_DAL.Repositories.Messages;
 using Messages_DAL.Services.Chats;
+using Messages_DAL.Services.Messages;
 using Messages_PubSubAPI.Hubs.App;
 using Messages_PubSubAPI.Hubs.Chats;
 using Messages_PubSubAPI.Hubs.Messages;
@@ -34,6 +36,9 @@ namespace Messages_PubSubAPI
         {
             services.AddScoped<IChatsRepository, ChatsRepository>();
             services.AddScoped<IChatsService, ChatsService>();
+
+            services.AddScoped<IMessagesRepository, MessagesRepository>();
+            services.AddScoped<IMessagesService, MessagesService>();
 
             services.AddDbContext<MessagesContext>(options =>
             {
