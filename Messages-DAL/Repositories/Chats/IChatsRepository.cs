@@ -12,5 +12,6 @@ namespace Messages_DAL.Repositories.Chats
     {
         IEnumerable<Chat> GetAll();
         ChatDetailDTO GetById(int id);
+        ChatDTO Create(ChatDTO chat);
     }
 }

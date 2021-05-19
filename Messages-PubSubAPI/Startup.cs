@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Messages_DAL.Database;
 using Messages_DAL.Repositories.Chats;
 using Messages_DAL.Services.Chats;
+using Messages_PubSubAPI.Hubs.App;
 using Messages_PubSubAPI.Hubs.Chats;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -59,12 +60,15 @@ namespace Messages_PubSubAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CorsPolicy");
+
             app.UseHttpsRedirection();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<AppHub>("hubs/app");
                 endpoints.MapHub<ChatHub>("hubs/chat");
             });
         }

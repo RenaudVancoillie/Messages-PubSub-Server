@@ -31,5 +31,7 @@ namespace Messages_DAL.Services.Chats
         }
 
         public ChatDetailDTO GetById(int id) => chatsRepository.GetById(id);
+
+        public ChatDTO Create(ChatDTO chat) => chatsRepository.Create(chat);
     }
 }

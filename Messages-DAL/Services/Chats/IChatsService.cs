@@ -11,5 +11,6 @@ namespace Messages_DAL.Services.Chats
     {
         IEnumerable<ChatDTO> GetAll();
         ChatDetailDTO GetById(int id);
+        ChatDTO Create(ChatDTO chat);
     }
 }

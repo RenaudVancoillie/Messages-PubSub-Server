@@ -39,5 +39,13 @@ namespace Messages_DAL.Repositories.Chats
                 .ProjectTo<ChatDetailDTO>(mapper.ConfigurationProvider)
                 .SingleOrDefault();
         }
+
+        public ChatDTO Create(ChatDTO chat)
+        {
+            Chat record = mapper.Map<Chat>(chat);
+            db.Chats.Add(record);
+            db.SaveChanges();
+            return mapper.Map<ChatDTO>(record);
+        }
     }
 }
