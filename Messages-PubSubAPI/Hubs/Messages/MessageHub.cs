@@ -17,6 +17,16 @@ namespace Messages_PubSubAPI.Hubs.Messages
             this.messagesService = messagesService;
         }
 
+        public async Task Subscribe(string channel)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, channel);
+        }
+
+        public async Task Unsubscribe(string channel)
+        {
+            await Groups.AddToGroupAsync(Context.ConnectionId, channel);
+        }
+
         public async Task Create(string channel, MessageDTO message)
         {
             message = messagesService.Create(message);
