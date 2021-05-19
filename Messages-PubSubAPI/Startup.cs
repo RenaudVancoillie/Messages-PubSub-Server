@@ -7,6 +7,7 @@ using Messages_DAL.Repositories.Chats;
 using Messages_DAL.Services.Chats;
 using Messages_PubSubAPI.Hubs.App;
 using Messages_PubSubAPI.Hubs.Chats;
+using Messages_PubSubAPI.Hubs.Messages;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -70,6 +71,7 @@ namespace Messages_PubSubAPI
             {
                 endpoints.MapHub<AppHub>("hubs/app");
                 endpoints.MapHub<ChatHub>("hubs/chat");
+                endpoints.MapHub<MessageHub>("hubs/messages");
             });
         }
     }
