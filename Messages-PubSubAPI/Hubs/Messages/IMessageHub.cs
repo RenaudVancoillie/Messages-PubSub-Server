@@ -8,8 +8,8 @@ namespace Messages_PubSubAPI.Hubs.Messages
 {
     public interface IMessageHub
     {
-        Task Create(MessageDTO message);
-        Task Update(MessageDTO message);
-        Task Delete(int id);
+        Task Create(string channel, MessageDTO message);
+        Task Update(string channel, MessageDTO message);
+        Task Delete(string channel, int id);
     }
 }

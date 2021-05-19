@@ -17,22 +17,22 @@ namespace Messages_PubSubAPI.Hubs.Messages
             this.messagesService = messagesService;
         }
 
-        public async Task Create(MessageDTO message)
+        public async Task Create(string channel, MessageDTO message)
         {
             message = messagesService.Create(message);
-            await Clients.All.MessageCreatedEvent(message);
+            await Clients.Group(channel).MessageCreatedEvent(message);
         }
 
-        public async Task Update(MessageDTO message)
+        public async Task Update(string channel, MessageDTO message)
         {
             message = messagesService.Update(message);
-            await Clients.All.MessageUpdatedEvent(message);
+            await Clients.Group(channel).MessageUpdatedEvent(message);
         }
 
-        public async Task Delete(int id)
+        public async Task Delete(string channel, int id)
         {
             MessageDTO message = messagesService.Delete(id);
-            await Clients.All.MessageDeletedEvent(message);
+            await Clients.Group(channel).MessageDeletedEvent(message);
         }
     }
 }
