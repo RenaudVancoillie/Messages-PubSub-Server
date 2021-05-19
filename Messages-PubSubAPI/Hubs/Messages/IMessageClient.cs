@@ -8,7 +8,7 @@ namespace Messages_PubSubAPI.Hubs.Messages
 {
     public interface IMessageClient
     {
-        Task MessageSentEvent(MessageDTO message);
+        Task MessageCreatedEvent(MessageDTO message);
         Task MessageUpdatedEvent(MessageDTO message);
         Task MessageDeletedEvent(MessageDTO message);
     }

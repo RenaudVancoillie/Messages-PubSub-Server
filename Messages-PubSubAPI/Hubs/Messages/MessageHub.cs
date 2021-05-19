@@ -3,25 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Messages_DAL.DTO.Messages;
+using Messages_DAL.Services.Messages;
 using Microsoft.AspNetCore.SignalR;
 
 namespace Messages_PubSubAPI.Hubs.Messages
 {
     public class MessageHub : Hub<IMessageClient>, IMessageHub
     {
-        public Task Create(MessageDTO message)
+        private readonly IMessagesService messagesService;
+
+        public MessageHub(IMessagesService messagesService)
         {
-            throw new NotImplementedException();
+            this.messagesService = messagesService;
         }
 
-        public Task Delete(int id)
+        public async Task Create(MessageDTO message)
         {
-            throw new NotImplementedException();
+            message = messagesService.Create(message);
+            await Clients.All.MessageCreatedEvent(message);
         }
 
-        public Task Update(MessageDTO message)
+        public async Task Update(MessageDTO message)
         {
-            throw new NotImplementedException();
+            message = messagesService.Update(message);
+            await Clients.All.MessageUpdatedEvent(message);
+        }
+
+        public async Task Delete(int id)
+        {
+            MessageDTO message = messagesService.Delete(id);
+            await Clients.All.MessageDeletedEvent(message);
         }
     }
 }
