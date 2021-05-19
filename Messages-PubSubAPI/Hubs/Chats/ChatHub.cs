@@ -19,7 +19,7 @@ namespace Messages_PubSubAPI.Hubs.Chats
 
         public async Task CreateChat(ChatDTO chat)
         {
-            chatsService.Create(chat);
+            chat = chatsService.Create(chat);
             await Clients.All.ChatCreatedEvent(chat);
         }
     }

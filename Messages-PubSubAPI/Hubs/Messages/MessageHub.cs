@@ -30,19 +30,19 @@ namespace Messages_PubSubAPI.Hubs.Messages
         public async Task Create(string channel, MessageDTO message)
         {
             message = messagesService.Create(message);
-            await Clients.Group(channel).MessageCreatedEvent(message);
+            await Clients.All.MessageCreatedEvent(message);
         }
 
         public async Task Update(string channel, MessageDTO message)
         {
             message = messagesService.Update(message);
-            await Clients.Group(channel).MessageUpdatedEvent(message);
+            await Clients.All.MessageUpdatedEvent(message);
         }
 
         public async Task Delete(string channel, int id)
         {
             MessageDTO message = messagesService.Delete(id);
-            await Clients.Group(channel).MessageDeletedEvent(message);
+            await Clients.All.MessageDeletedEvent(message);
         }
     }
 }

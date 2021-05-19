@@ -6,7 +6,7 @@ using AutoMapper;
 using Messages_DAL.DTO.Messages;
 using Messages_DAL.Models;
 
-namespace Messages_WebAPI.Mappings
+namespace Messages_PubSubAPI.Mappings
 {
     public class MessageProfile : Profile
     {

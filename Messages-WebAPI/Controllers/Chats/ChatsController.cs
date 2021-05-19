@@ -58,5 +58,20 @@ namespace Messages_PubSubAPI.Controllers.Chats
                     $"Something went wrong: {exc.Message}");
             }
         }
+
+        [HttpPost]
+        public ActionResult<ChatDTO> Create([FromBody] ChatDTO chat)
+        {
+            try
+            {
+                chat = chatsService.Create(chat);
+                return Ok(chat);
+            } 
+            catch (Exception exc)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"Something went wrong: {exc.Message}");
+            }
+        }
     }
 }
