@@ -35,6 +35,7 @@ namespace Messages_DAL.Repositories.Messages
             if (record != null)
             {
                 mapper.Map(message, record);
+                record.UpdatedAt = DateTime.Now;
                 db.SaveChanges();
             }
             return mapper.Map<MessageDTO>(record);
